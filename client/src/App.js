@@ -4,6 +4,7 @@ import Footer from "./components/layouts/footer"
 import SignIn from "./components/layouts/pages/sign-in"
 import Register from "./components/layouts/pages/sign-up"
 import Profile from "./components/layouts/pages/user-profile"
+import Homepage from "./components/layouts/home-page" 
 import Home from './components/layouts/pages/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
@@ -16,6 +17,7 @@ import PrivateRoute from './components/layouts/auth/ProtectRoute'
 import AddCurriculum from './components/layouts/pages/AddCurriculum'
 import ViewIndividualCurriculum from './components/layouts/pages/ViewIndividualCurriculum'
 import EditCurriculum from './components/layouts/pages/EditCurriculum'
+import HomePage from "./components/layouts/home-page"
 
   if(localStorage.token){
       AuthToken(localStorage.token)
@@ -41,7 +43,7 @@ function App() {
         <Switch>
           <Route exact path="/login" component={SignIn} />
           <Route exact path="/register" component={Register} />
-          
+          <Route exact path="/homepage" component={HomePage} />
           <PrivateRoute exact path="/profile" component={Profile} />
           <Route path="/curriculum" render={() => <Home posts={posts}/>} />
           <Route exact path="/api/curriculum/:id" render={(props) => <ViewIndividualCurriculum {...props} posts={posts}/>} />

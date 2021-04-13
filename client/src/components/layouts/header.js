@@ -1,41 +1,39 @@
-import React, {useContext, useEffect, Fragment} from "react";
+import React, { useContext, useEffect, Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import AuthContext from "../layouts/auth/AuthContext"
 
 const Header = props => {
   const authContext = useContext(AuthContext)
-  const {user, isAuthenticated, logout} = authContext
+  const { user, isAuthenticated, logout } = authContext
   const Exit = () => {
     logout();
   }
   const authlink = (
     <Fragment>
       <li
-        class={`nav-item  ${
-        props.location.pathname === "/curriculum" ? "active" : ""
-        }`}
-        >
+        class={`nav-item  ${props.location.pathname === "/curriculum" ? "active" : ""
+          }`}
+      >
         <Link class="nav-link" to="/curriculum">
           Curriculum
         </Link>
       </li>
       <li
-        class={`nav-item  ${
-          props.location.pathname === "/profile" ? "active" : ""
-        }`}
+        class={`nav-item  ${props.location.pathname === "/profile" ? "active" : ""
+          }`}
       >
         <Link class="nav-link" to="/profile">
           Profile
         </Link>
       </li>
       <li class={`nav-item`}>
-      <Link class="nav-link" to="/add-curriculum">
+        <Link class="nav-link" to="/add-curriculum">
           Add Curriculum
         </Link>
-      </li>  
+      </li>
       <li
         class={`nav-item`}
-        >
+      >
         <a onClick={Exit} class="nav-link" href="/login">
           Logout
         </a>
@@ -46,9 +44,8 @@ const Header = props => {
   const unauthlink = (
     <Fragment>
       <li
-        class={`nav-item  ${
-          props.location.pathname === "/login" ? "active" : ""
-        }`}
+        class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""
+          }`}
       >
         <Link class="nav-link" to="/login">
           Sign-In
@@ -56,9 +53,8 @@ const Header = props => {
         </Link>
       </li>
       <li
-        class={`nav-item  ${
-          props.location.pathname === "/register" ? "active" : ""
-        }`}
+        class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""
+          }`}
       >
         <Link class="nav-link" to="/register">
           Sign Up
@@ -69,8 +65,9 @@ const Header = props => {
   return (
     <div className="header">
       <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <img src={"./PPIcon.jpg"} alt="site icon" height={50} width={50}/>
         <div class="container">
-          <Link class="navbar-brand" to="/">
+          <Link class="navbar-brand" to="/homepage"> 
             Professor's Place
           </Link>
           <div>

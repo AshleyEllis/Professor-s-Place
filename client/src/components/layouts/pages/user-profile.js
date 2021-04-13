@@ -1,27 +1,47 @@
-import React, {useContext, useEffect} from "react";
+import React, { useContext, useEffect } from "react";
 import ProfileForm from '../ProfileForm'
 import AllProfile from "../AllProfile"
 import AuthContext from '../auth/AuthContext'
 import profilePic from './splash.png'
 const Profile = props => {
   const authContext = useContext(AuthContext)
-  const {user, isAuthenticated, loadUser} = authContext
-  useEffect(()=>{
-    if(isAuthenticated){
+  const { user, isAuthenticated, loadUser } = authContext
+  useEffect(() => {
+    if (isAuthenticated) {
       loadUser()
     }
-    else{
+    else {
       props.history.push('/login')
     }
   }, [isAuthenticated, props.history])
   return (
-    <div className="card border-dark mb-3" style={{width:'40%', margin: '0 auto', display: 'flex'}}>
-  <img className="card-img-top" src={profilePic} alt="Card image cap"/>
-  <div className="card-body">
-    <h2 className="card-title">Name: {user && user.name}</h2>
-    <h5 className="card-text">Email: {user && user.email}</h5>
-  </div>
-  </div>
+    <form className="form-container">
+
+      <h3 style={{ textAlign: 'center' }}>{user && user.name}'s Profile</h3>
+
+      <div className="user-profile" style={{ textAlign: 'center' }}>
+        <img src={profilePic} alt="Card image cap" height={200} width={200} />
+      </div>
+
+      <div className="form-group">
+      <label>Name: &nbsp; </label>
+        {user && user.name}
+      </div>
+
+      <div className="form-group">
+        <label>Email address: &nbsp; </label>
+        {user && user.email}
+      </div>
+      <div className="form-group">
+        <label>Phone Number: &nbsp; </label>
+        123-456-7890
+      </div>
+      <div className="form-group">
+        <label>Bio: &nbsp; </label>
+        Im blah blah, I teach blah blah, and so on and so forth. 
+      </div>
+    
+    </form>
   );
 }
 
