@@ -17,8 +17,6 @@ function HomePage() {
       </div>
 
     </form>
-
-
   );
 }
 
