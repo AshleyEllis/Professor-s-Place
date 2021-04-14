@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import ProfileForm from '../ProfileForm'
 import AllProfile from "../AllProfile"
 import AuthContext from '../auth/AuthContext'
-import profilePic from './splash.png'
+import profilePic from './icon.jpg'
 const Profile = props => {
   const authContext = useContext(AuthContext)
   const { user, isAuthenticated, loadUser } = authContext
@@ -23,24 +23,21 @@ const Profile = props => {
         <img src={profilePic} alt="Card image cap" height={200} width={200} />
       </div>
 
-      <div className="form-group">
-      <label>Name: &nbsp; </label>
-        {user && user.name}
+      <div>
+        &nbsp;
       </div>
 
-      <div className="form-group">
-        <label>Email address: &nbsp; </label>
-        {user && user.email}
-      </div>
-      <div className="form-group">
-        <label>Phone Number: &nbsp; </label>
-        123-456-7890
-      </div>
-      <div className="form-group">
-        <label>Bio: &nbsp; </label>
-        Im blah blah, I teach blah blah, and so on and so forth. 
-      </div>
-    
+      <ul className="list-group">
+        <li className="list-group-item"> Name: {user && user.name} </li>
+        <li className="list-group-item"> Email Address: {user && user.email} </li>
+        <li className="list-group-item"> Phone Number: {user && user.phone} </li>
+        <li className="list-group-item"> Bio: {user && user.bio} </li>
+      </ul>
+
+      <p className="btn-info-wrapper">
+      <a href="/profile-form" className="btn-info" style={{paddingRight: '15px'}}>Edit</a>
+      <a href="#" className="btn-info">Delete</a>
+      </p>
     </form>
   );
 }

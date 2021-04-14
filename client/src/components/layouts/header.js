@@ -64,7 +64,7 @@ const Header = props => {
   )
   return (
     <div className="header">
-      <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <nav class="navbar navbar-expand navbar-dark bg-secondary shadow">
       <img src={"./PPIcon.jpg"} alt="site icon" height={50} width={50}/>
         <div class="container">
           <Link class="navbar-brand" to="/homepage"> 
