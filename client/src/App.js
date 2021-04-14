@@ -3,7 +3,7 @@ import Header from "./components/layouts/header"
 import Footer from "./components/layouts/footer"
 import SignIn from "./components/layouts/pages/sign-in"
 import Register from "./components/layouts/pages/sign-up"
-import Profile from "./components/layouts/pages/user-profile" 
+import Profile from "./components/layouts/pages/user-profile"
 import Home from './components/layouts/pages/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
@@ -17,6 +17,7 @@ import AddCurriculum from './components/layouts/pages/AddCurriculum'
 import ViewIndividualCurriculum from './components/layouts/pages/ViewIndividualCurriculum'
 import EditCurriculum from './components/layouts/pages/EditCurriculum'
 import HomePage from "./components/layouts/home-page"
+import ProfileForm from './components/layouts/ProfileForm'
 
   if(localStorage.token){
       AuthToken(localStorage.token)
@@ -37,14 +38,15 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <div className="auth-wrapper">
-        <div className="auth-inner">
+        <div className="group-wrapper">
+        <div className="group-inner">
         <Switch>
           <Route exact path="/login" component={SignIn} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/homepage" component={HomePage} />
           <PrivateRoute exact path="/profile" component={Profile} />
           <Route path="/curriculum" render={() => <Home posts={posts}/>} />
+          <PrivateRoute exact path="/profile-form" component={ProfileForm} />
           <Route exact path="/api/curriculum/:id" render={(props) => <ViewIndividualCurriculum {...props} posts={posts}/>} />
           <Route exact path="/api/curriculum/update/:id" render={(props) => <EditCurriculum {...props} posts={posts}/>} />
           <PrivateRoute exact path="/add-curriculum" component={AddCurriculum} />
